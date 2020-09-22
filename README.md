@@ -1,4 +1,4 @@
-[**ReactJS-Redux-TMDb-app**](https://github.com/rashmiap/react-redux-TMDb-app)
+[**ReactJS-Redux-TMDb-app**](https://github.com/RisingStar-Web/react-redux-TMDb-app)
 
 
 Made with :heart: in React
