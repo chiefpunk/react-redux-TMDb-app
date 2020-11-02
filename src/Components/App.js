@@ -10,6 +10,7 @@ const mapStateToProps = (state) => {
     hasErrored: state.hasErrored,
     isLoading: state.isLoading,
     castDetails: state.castDetails,
+    videoDetails: state.videoDetails,
     shows: state.shows,
     currentMovie: state.currentMovie,
     currentShow: state.currentShow,

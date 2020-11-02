@@ -6,7 +6,7 @@ export const headerStyles = {
     width: '120px',
   },
   appBar: {
-    backgroundColor: '#000',
+    backgroundColor: '#000077',
     padding: '10px 0',
   }
 };

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { cardDetails } from '../Styles/styles';
 import Button from '@material-ui/core/Button';
 import Icon from '@material-ui/core/Icon';
+import YouTube from 'react-youtube';
 import { detailsStyles } from '../Styles/styles';
 import voteAvg from '../Assets/vote-count.svg';
 import releaseDate from '../Assets/release-date.svg';
@@ -13,8 +14,10 @@ export default class MovieDetail extends Component {
   componentDidMount(){
     window.scrollTo(0,0);
     const movieId = this.props.match.params.postId;
+
     this.props.fetchCurrentMovie(movieId, this.props.movies);
     this.props.fetchCastData(`https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=28967d69513d49d94603253876b995a8`);
+    this.props.fetchVideo(`https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=28967d69513d49d94603253876b995a8`);
   }
   __renderCast(){
     let renderCastBlock = [];
@@ -36,6 +39,10 @@ export default class MovieDetail extends Component {
      : [];
     return renderCastBlock;
   }
+  _onReady(event) {
+    // access to player in all event handlers via event.target
+    event.target.playVideo();
+  }
   render(){
     if (this.props.hasErrored) {
       return <div className="movie-listing__error">
@@ -48,13 +55,22 @@ export default class MovieDetail extends Component {
             <CircularProgress size={150} thickness={2}/>
       </div>;
     }
+    const opts = {
+      height: '550vh',
+      width: '100%',
+      playerVars: {
+        // https://developers.google.com/youtube/player_parameters
+        autoplay: 0,
+      },
+    };
     return(
       <div className="details">
         {
           this.props.currentMovie.length > 0 ?
           <div>
             <div className="details-header" style={Object.assign({ backgroundImage:`url(https://image.tmdb.org/t/p/original${this.props.currentMovie[0].backdrop_path})`},cardDetails.headerStyles)}>
-              &nbsp;
+              {this.props.videoDetails.results && this.props.videoDetails.results.length > 0 ? <YouTube videoId={this.props.videoDetails.results[0].key} opts={opts} onReady={this._onReady} /> : null}
+              
             </div>
             <div className="details-body">
               <div className="details-content">
