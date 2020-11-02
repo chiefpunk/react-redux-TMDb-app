@@ -7,9 +7,7 @@ const movieApiUrl = 'https://api.themoviedb.org/3/discover/movie?api_key=28967d6
 const showsApiUrl = 'https://api.themoviedb.org/3/discover/tv?api_key=28967d69513d49d94603253876b995a8&language=en-US&sort_by=popularity.desc&page=1&timezone=America%2FNew_York&include_null_first_air_dates=false';
 
 export default class MovieList extends Component {
-  constructor(props){
-    super(props);
-  }
+
   componentDidMount () {
     window.scrollTo(0,0);
     if(this.props.movieType === 'movies'){
