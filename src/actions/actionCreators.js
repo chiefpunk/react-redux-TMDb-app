@@ -41,7 +41,7 @@ export function fetchIsLoading(bool) {
 }
 
 export function fetchDataSuccess(item, movieType) {
-  if(movieType == 'movie') {
+  if(movieType === 'movie') {
     return {
       type: types.FETCH_DATA_SUCCESS,
       movies: item,

@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import MovieTile from './MovieTile';
 
 export default class SavedTile extends Component {
-  constructor(props){
-    super(props);
-  }
+  
   componentDidMount(){
     window.scrollTo(0,0);
   }

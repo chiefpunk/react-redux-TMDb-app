@@ -4,7 +4,7 @@ export function currentShow(state = [], action){
   switch (action.type) {
 
     case FETCH_CURRENT_SHOW:
-      return action.shows.filter(item => item.id == action.movieId);
+      return action.shows.filter(item => item.id === action.movieId);
 
     case TOGGLE_DETAIL_SHOW:
         const newState = [...state] // clone the array

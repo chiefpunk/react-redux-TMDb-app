@@ -12,26 +12,26 @@ export default class MovieList extends Component {
   }
   componentDidMount () {
     window.scrollTo(0,0);
-    if(this.props.movieType == 'movies'){
-      if(Object.keys(this.props.movies).length == 0){
+    if(this.props.movieType === 'movies'){
+      if(Object.keys(this.props.movies).length === 0){
         this.props.fetchData(movieApiUrl,'movie');
       }
     }
     else{
-      if(Object.keys(this.props.shows).length == 0){
+      if(Object.keys(this.props.shows).length === 0){
         this.props.fetchData(showsApiUrl,'show');
       }
     }
   }
   shouldComponentUpdate(nextProps, nextState){
-    if(nextProps.location.pathname != this.props.location.pathname){
-      if(nextProps.movieType == 'movies'){
-        if(Object.keys(nextProps.movies).length == 0){
+    if(nextProps.location.pathname !== this.props.location.pathname){
+      if(nextProps.movieType === 'movies'){
+        if(Object.keys(nextProps.movies).length === 0){
           this.props.fetchData(movieApiUrl,'movie');
         }
       }
       else{
-        if(Object.keys(nextProps.shows).length == 0){
+        if(Object.keys(nextProps.shows).length === 0){
           this.props.fetchData(showsApiUrl,'show');
         }
       }
@@ -77,9 +77,9 @@ export default class MovieList extends Component {
 
     return(
       <div className="movie-listing">
-        <p>{ this.props.movieType == 'movies' ? `Discover the latest Movies` : `Discover the latest TV Shows`}</p>
+        <p>{ this.props.movieType === 'movies' ? `Discover the latest Movies` : `Discover the latest TV Shows`}</p>
         <div className="movie-listing__blocks">
-            { this.props.movieType == 'movies' ? this.__renderTiles() : this.__renderShows() }
+            { this.props.movieType === 'movies' ? this.__renderTiles() : this.__renderShows() }
         </div>
       </div>
     )
